@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <section class="showcase">
+            <header>
+              <h2 class="logo">Exercise Guidance System</h2>
+            </header>
+            <video src="/media/video.mp4" muted loop autoplay></video>
+            <div class="overlay"></div>
+            <!--Login form-->
+            <div class = "center">  
+                <br>
+                <div class="user_photo">
+                    <i class="fa fa-user"></i>
+                </div>
+                <br>
+                <h2>Login</h2>
+
+                <form method="POST" >       <!--form tag is a container -->
+                    {% csrf_token %}
+                    <div class="txt_field">
+                        {% csrf_token %}
+                        <input type="type" name="username" required>
+                        <span></span>
+                        <label>UserName </label>  
+                    </div>
+                    <div class="txt_field">
+                        {% csrf_token %}
+                        <input type="password" name="password"  required>        <!--add a name="password"-->
+                        <span></span>
+                        <label>Password </label>  
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert-success">
+                            <a class="close"  data-dismiss="alert">*{{message}}</a>  
+                        </div>
+                        {%endfor%}
+                    {% endif %}
+
+                    <a class="tf_password" href="{% url 'password_reset' %}" ><div class="f_password">Forgot Password</div></a>
+                    <input type="submit" value="Login" class="login" > 
+
+                    <div class="or">Or</div>
+
+                    {% csrf_token %}    
+                    <a href="{% url 'facelogin' %}" >
+                        <input type="button" value="Face Login" class="face_login"> 
+                    </a>
+
+                    <div class="Register">
+                        {% csrf_token %}	<!--safter way of sending data-->
+                        Don't have an account? <a href="{% url 'register' %}" >Register</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>
+
+
+<!--css -->
+<style>
+body{
+    margin: 0;
+    padding: 0;
+    background: #7abecc;
+    
+}
+
+/* .center =>login form setting */
+.center{   
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    /*the above 5 codes mean's 水平局左 to build a 400px width rectangle */
+    background: white;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+.center h2{
+    text-align: center;
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid gray;
+}
+.center form{
+    padding: 0 20px ;
+    box-sizing: border-box;
+}
+form .txt_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+.txt_field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+.txt_field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: gray;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: .5s;
+}
+.txt_field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: gray;
+    transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+    top: -5px;
+    color: black;
+
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before{
+    width: 100%;
+}
+.f_password{
+    margin: -5px 0 20px 5px;
+    color: gray;
+    cursor: pointer;
+}
+.f_password:hover{
+    text-decoration: underline;  
+    color: black;
+}
+.login{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #1E90FF;
+    border-radius: 25px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+.login:hover{
+    border-color: #1E90FF;
+    transition: .5s;
+}    
+.or{
+    text-align: center;
+    padding:15px;
+    color: gray;
+}
+.face_login{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #1E90FF;
+    border-radius: 25px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+.face_login:hover{
+    border-color: #1E90FF;
+    transition: .5s;
+}  
+.Register{
+    margin: 30px 0 ;
+    text-align: center;
+    font-size: 15px;
+    color:gray ;
+}
+.Register a{
+    color:#1E90FF;
+    text-decoration: none;
+}
+.Register a:hover{
+    text-decoration: underline;
+}
+.alert-success{
+    font-size: 15px;
+    margin: -5px 0 20px 5px;
+    color: red;
+}
+.close{
+    color: red;
+}
+.tf_password{
+    text-decoration:none;
+}
+.user_photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: blue;
+      margin: 0 auto;
+      box-shadow:
+        0px 0px 2px #5f5f5f,
+        0px 0px 0px 5px #ecf0f3,
+        8px 8px 15px #a7aaaf,
+        -8px -8px 15px #ffffff;
+
+    }
+
+.user_photo i {
+    font-size: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    color: #ffffff;
+}
+/*Start for the MP4 background layout*/
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+header
+{
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  /*內邊距,上下一齊padd 30px,左右一齊padd 100px*/
+  padding: 30px 100px;  
+  /*z-index is set the element "header" will or will not be covered by the background, 
+  if z-index set to -1 the header will cover by the background*/
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}
+header .logo
+{
+  color: #fff;
+  /*Convert the text to UpperCase*/
+  text-transform: uppercase;
+  cursor: pointer;
+  padding-left: 100px;   
+}
+
+.showcase
+{
+  position: absolute;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  transition: 0.5s;
+  z-index: 2;
+}
+.showcase.active
+{
+  right: 300px;
+}
+
+.showcase video
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #03a9f4;
+  mix-blend-mode: overlay;
+}
+@media (max-width: 990px)
+{
+  .showcase,
+  .showcase header
+  {
+    padding: 40px;
+  }
+  .text h2
+  {
+    font-size: 3em;
+  }
+  .text h3
+  {
+    font-size: 2em;
+  }
+}
+</style>

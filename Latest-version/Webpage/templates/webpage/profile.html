@@ -1,0 +1,111 @@
+{%  extends 'Webpage/main.html' %}   #inherit main.html
+{% block content %}
+<div class="section-flex">
+    <div class="space">     <!--use for padding-->
+        <div class="cards">
+            <div class="cards__item">       <!--left-up-corner-->
+             <h3>Account Setting</h3>
+				<hr>
+				<h3 style="text-align: center">{{request.user}}</h3>
+				<hr>
+				<img class="profile-pic" src={{user.profile.image.url}}> 
+            </div>
+            
+            <div class="space"></div>   <!--use for padding-->
+            
+            <div class="cards__item_right">		<!--right-up-corner-->
+               <form method="POST" action="" enctype="multipart/form-data">
+				<!-- <label>Name:</label>&nbsp;{{p_form.name}} -->
+<!--  				<h5>Name:  {{p_form.name}} </h5><br>
+				<h5>Email: {{u_form.email}}</h5><br>
+				<h5>Phone: {{p_form.phone}}</h5><br>
+				<h5>City:  {{p_form.city}}</h5><br>
+				<h5>Image: {{p_form.image}}</h5>  -->
+				{% csrf_token %}
+				<label>Name:</label> {{p_form.name}}
+				<div></div>
+				<label>Email:</label> {{u_form.email}}
+				<div></div>
+				<label>Phone:</label> {{p_form.phone}}
+				<div></div>
+				<label>City:</label> {{p_form.city}}
+				<div></div>
+				<div class="img_space">Image:{{p_form.image}}</div>
+				
+				<div class="btn_space">
+        			<input class="btn btn-primary" type="submit" name="Update Information" value="Update Information">
+        	    </div>
+			</form>
+            </div>
+        </div>
+	</div>
+</div>
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+		padding: 0 15px;		/*left and right reserve 30 pixel*/
+	}
+	.m_content{
+		padding-top: 30px;			/*padding top 30 pixel*/
+		margin: 0 auto;					/*center*/
+	}
+	.cards {    
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -8px;
+		margin-right: -8px;
+	}	
+
+	.cards__item {
+		text-align: center;
+		width: 800px;
+		flex-basis: 25%;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 15px;
+		padding-bottom: 15px;  
+		border: 2px solid black;
+		border-radius: 16px;
+		
+	}
+	.cards__item_right {
+		
+		width: 800px;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 15px;
+		padding-bottom: 15px; 
+		border: 2px solid black;
+		border-radius: 14px;
+		
+	}
+	.space{
+		padding-left: 25px;
+		padding-top: 25px;
+		
+	}
+	.section-flex {                    
+		display: flex;
+		justify-content: center;
+	} 
+	label {
+		text-align:right;
+		padding-right:20px;
+		display:inline-block;
+		min-width:150px;
+	}
+	.img_space{
+		padding-left: 82px;
+		text-align: left;
+		
+	}
+	.btn_space{
+		padding-left: 82px;
+		padding-top: 25px;
+		text-align: left;
+	}
+</style>
+{% endblock %}
