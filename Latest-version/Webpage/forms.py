@@ -55,31 +55,31 @@ class ChangePasswordform(forms.Form):
         required=True,
         label="Oldpassword",
         error_messages={'required': 'Please enter the oldpassword'},
-        # widget=forms.PasswordInput(
-        #     attrs={
-        #         'placeholder':"Oldpassword",
-        #     }
-        # ),
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder':"Oldpassword",
+            }
+        ),
     ) 
     newpassword1 = forms.CharField(
         required=True,
         label="New password",
         error_messages={'required': 'Please enter the newpassword'},
-        # widget=forms.PasswordInput(
-        #     attrs={
-        #         'placeholder':"New Password",
-        #     }
-        # ),
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder':"New Password",
+            }
+        ),
     )
     newpassword2 = forms.CharField(
         required=True,
         label="Re-enter new password",
         error_messages={'required': 'Please enter the newpassword again'},
-        # widget=forms.PasswordInput(
-        #     attrs={
-        #         'placeholder':"Confirmation Password",
-        #     }
-        # ),
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder':"Confirmation Password",
+            }
+        ),
      )
     def clean(self):
         if not self.is_valid():
