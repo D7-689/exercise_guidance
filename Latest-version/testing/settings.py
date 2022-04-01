@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-from pickle import TRUE
+from pickle import FALSE, TRUE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_$am0140ec@xs6$@ur-&*@f4ri))z06h49bsl@n$a6t*55=73$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TRUE  # change from true to false
+DEBUG = FALSE  # change from true to false
 
 ALLOWED_HOSTS = ['exercise-guidance.herokuapp.com','127.0.0.1']
 
@@ -59,7 +59,8 @@ ROOT_URLCONF = 'testing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Add os.path.join(BASE_DIR, 'templates') into the DIRS to solve the heroku problem
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
