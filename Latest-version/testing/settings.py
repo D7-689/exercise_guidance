@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from pickle import TRUE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_$am0140ec@xs6$@ur-&*@f4ri))z06h49bsl@n$a6t*55=73$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  # change from true to false
+DEBUG = TRUE  # change from true to false
 
 ALLOWED_HOSTS = ['exercise-guidance.herokuapp.com','127.0.0.1']
 
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # The Add for heroku----------------------------#
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     #------------------------------------------------#
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,7 +125,6 @@ USE_TZ = True
 # The Add for heroku----------------------------#
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 #------------------------------------------------#
 
 STATIC_URL = '/static/'
