@@ -60,7 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # Add os.path.join(BASE_DIR, 'templates') into the DIRS to solve the heroku problem
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'Webpage/templates/webpage')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
