@@ -1,45 +1,113 @@
 {%  extends 'webpage/main.html' %}   
 {% block content %}
-<div class="section-flex">
-    <div class="space">     <!--use for padding-->
-        <div class="cards">
-            <div class="cards__item">       <!--left-up-corner-->
-             <h3>Account Setting</h3>
-				<hr>
-				<h3 style="text-align: center">{{request.user}}</h3>
-				<hr>
-				<img class="profile-pic" src={{user.profile.image.url}}> 
-            </div>
-            
-            <div class="space"></div>   <!--use for padding-->
-            
-            <div class="cards__item_right">		<!--right-up-corner-->
-               <form method="POST" action="" enctype="multipart/form-data">
-				<!-- <label>Name:</label>&nbsp;{{p_form.name}} -->
-<!--  				<h5>Name:  {{p_form.name}} </h5><br>
-				<h5>Email: {{u_form.email}}</h5><br>
-				<h5>Phone: {{p_form.phone}}</h5><br>
-				<h5>City:  {{p_form.city}}</h5><br>
-				<h5>Image: {{p_form.image}}</h5>  -->
-				{% csrf_token %}
-				<label>Name:</label> {{p_form.name}}
-				<div></div>
-				<label>Email:</label> {{u_form.email}}
-				<div></div>
-				<label>Phone:</label> {{p_form.phone}}
-				<div></div>
-				<label>City:</label> {{p_form.city}}
-				<div></div>
-				<div class="img_space">Image:{{p_form.image}}</div>
-				
-				<div class="btn_space">
-        			<input class="btn btn-primary" type="submit" name="Update Information" value="Update Information">
-        	    </div>
-			</form>
-            </div>
+<!-- For new design -->
+
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+							<img class="profile-pic" src={{user.profile.image.url}}> 
+                        </div>
+                        
+							
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+										Account Setting                                    
+									</h5>
+									
+                                    <p class="proile-rating">User : <span>{{request.user}}</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Other</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <!-- <button class="profile-edit-btn" name="btn_AddMore" value="Edit Profile"> -->
+                        {% csrf_token %}        
+                        <button onclick="myFunction()"  class="profile-edit-btn" type="button" >Edit Profile</button>
+                                
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>Interest</p>
+                            <a >Bench press</a><br/>
+                            <a >Barbell curl</a><br/>
+                            <a ></a>
+                            <p>Other</p>
+                            <a> </a><br/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="d_input" id="db_event">{{p_form.name}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="d_input" id="db_event-1">{{u_form.email}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="d_input" id="db_event-2">{{p_form.phone}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>City:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="d_input" id="db_event-3">{{p_form.city}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="btn_space">
+                                                <!-- <input class="btn btn-primary" type="submit" name="Update Information" value="Update Information"> -->
+                                                <button type="submit" name="Update Information" class="btn btn-primary" >Update Information</button>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Other</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Unkown</p>
+                                            </div>
+                                        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
         </div>
-	</div>
-</div>
+
+
 <style>
 	.profile-pic{
 		max-width: 200px;
@@ -92,7 +160,6 @@
 		justify-content: center;
 	} 
 	label {
-		text-align:right;
 		padding-right:20px;
 		display:inline-block;
 		min-width:150px;
@@ -103,9 +170,136 @@
 		
 	}
 	.btn_space{
-		padding-left: 82px;
+		padding-left: 12px;
 		padding-top: 25px;
 		text-align: left;
 	}
+
+	/* New design */
+body{
+    background: #f5f5fb;
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+    border-radius: 14px;
+    border: 3px solid black;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 16px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+
+input {
+  border:none;
+
+}
+.d_input{
+    pointer-events: none;
+    border: none;
+    outline: none;  
+}
+
+
 </style>
+<script>
+
+function myFunction() {
+  var elems = document.getElementsByTagName('input');
+
+  document.getElementById("db_event").classList.remove("d_input");
+  document.getElementById("db_event-1").classList.remove("d_input");
+  document.getElementById("db_event-2").classList.remove("d_input");
+  document.getElementById("db_event-3").classList.remove("d_input");
+  
+    for (let i=0; i < elems.length; i++) {
+        elems[i].style.border = null;
+        elems[i].removeAttribute("style");
+    }
+}
+</script>
 {% endblock %}

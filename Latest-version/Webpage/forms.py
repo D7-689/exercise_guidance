@@ -57,7 +57,7 @@ class ChangePasswordform(forms.Form):
         error_messages={'required': 'Please enter the oldpassword'},
         widget=forms.PasswordInput(
             attrs={
-                'placeholder':"Oldpassword",
+                'placeholder':"",
             }
         ),
     ) 
@@ -67,7 +67,7 @@ class ChangePasswordform(forms.Form):
         error_messages={'required': 'Please enter the newpassword'},
         widget=forms.PasswordInput(
             attrs={
-                'placeholder':"New Password",
+                'placeholder':"",
             }
         ),
     )
@@ -77,7 +77,7 @@ class ChangePasswordform(forms.Form):
         error_messages={'required': 'Please enter the newpassword again'},
         widget=forms.PasswordInput(
             attrs={
-                'placeholder':"Confirmation Password",
+                'placeholder':"",
             }
         ),
      )

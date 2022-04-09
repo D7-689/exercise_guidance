@@ -161,7 +161,7 @@ def ChangePasswordPage(request):
                 newpassword = request.POST.get('newpassword1', '')
                 user.set_password(newpassword)
                 user.save()
-                return redirect('home')
+                return redirect('login')
             else:
                 return render(request, 'webpage/changepassword.html',{'form': form,'oldpassword_is_wrong':True})
         else:
