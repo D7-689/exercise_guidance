@@ -1,5 +1,7 @@
+import django
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.validators import MaxValueValidator   # Use in User_height_weightform
 import time
 import os
 
@@ -19,5 +21,15 @@ class Learner(models.Model):                                    #Self-declare mo
     city = models.CharField(max_length=50, null=True)
     image = models.ImageField(default='default.png',null=True,blank=True)             #upload_to='static/images'
 
-    def __str__(self):
-        return f"{self.user.username} Profile"
+class User_Weight_Height(models.Model):
+    gender_choice = (
+        ('F', 'Female',),
+        ('M', 'Male',),
+    )
+    user =  models.OneToOneField(User, on_delete=models.CASCADE,related_name='person_info')
+    height = models.PositiveIntegerField(validators=[MaxValueValidator(250)],null=True)
+    weight = models.PositiveIntegerField(validators=[MaxValueValidator(400)],null=True)
+    age = models.PositiveIntegerField(validators=[MaxValueValidator(100)],null=True)
+    gender = models.CharField(max_length=1,choices=gender_choice,null=True)
+
+ 

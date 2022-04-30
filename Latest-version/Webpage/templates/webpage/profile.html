@@ -56,7 +56,7 @@
                                                 <label>Name:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="d_input" id="db_event">{{p_form.name}}</p>
+                                                <p class="d_input" id="db_event">{{profile_form.name}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -64,7 +64,7 @@
                                                 <label>Email:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="d_input" id="db_event-1">{{u_form.email}}</p>
+                                                <p class="d_input" id="db_event-1">{{user_form.email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -72,7 +72,7 @@
                                                 <label>Phone:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="d_input" id="db_event-2">{{p_form.phone}}</p>
+                                                <p class="d_input" id="db_event-2">{{profile_form.phone}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -80,9 +80,19 @@
                                                 <label>City:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="d_input" id="db_event-3">{{p_form.city}}</p>
+                                                <p class="d_input" id="db_event-3">{{profile_form.city}}</p>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Image:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                 <div class="d_input" id="db_event-4">{{profile_form.image}}</div>
+                                            </div>
+                                        </div>
+
+                                        
                                         <div class="row">
                                             <div class="btn_space">
                                                 <!-- <input class="btn btn-primary" type="submit" name="Update Information" value="Update Information"> -->
@@ -93,13 +103,39 @@
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Other</label>
+                                                <label>Gender</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Unkown</p>
+                                                <div class="d_input" id="db_event-5">{{weight_height_form.gender}}</div>
                                             </div>
                                         </div>
-
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Age</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d_input" id="db_event-6">{{weight_height_form.age}}</div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Height(cm)</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d_input" id="db_event-7">{{weight_height_form.height}}</div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Weight(kg)</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d_input" id="db_event-8">{{weight_height_form.weight}}</div>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
                     </div>
@@ -213,6 +249,7 @@ body{
 }
 .profile-head h5{
     color: #333;
+    font-weight: bold;
 }
 .profile-head h6{
     color: #0062cc;
@@ -295,6 +332,11 @@ function myFunction() {
   document.getElementById("db_event-1").classList.remove("d_input");
   document.getElementById("db_event-2").classList.remove("d_input");
   document.getElementById("db_event-3").classList.remove("d_input");
+  document.getElementById("db_event-4").classList.remove("d_input");
+  document.getElementById("db_event-5").classList.remove("d_input");
+  document.getElementById("db_event-6").classList.remove("d_input");
+  document.getElementById("db_event-7").classList.remove("d_input");
+  document.getElementById("db_event-8").classList.remove("d_input");
   
     for (let i=0; i < elems.length; i++) {
         elems[i].style.border = null;

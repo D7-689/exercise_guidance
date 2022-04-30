@@ -30,5 +30,10 @@ urlpatterns = [
     path('password_reset/',views.password_reset_page, name="password_reset"),
     path('dashboard/',views.dashboard),
     path('changepwd/',views.ChangePasswordPage,name="changepwd"),
+    path('exercise/',views.Exercisepage,name="exercise"),
+    path('exercise/video_stream/', views.video_stream, name='video_stream'),
+    path('contact/', views.Contactpage, name='contact'),
+
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

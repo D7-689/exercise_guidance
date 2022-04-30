@@ -10,11 +10,16 @@
     <!-- google font -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    
+
     <!-- style -->
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="stylesheet" type="text/css" href="{% static 'authentication/css/dashboard.css' %}"/>
   </head>
   <body>
+    
     <!-- sidenav -->
     <aside id="side-nav" class="side-nav">
       <!-- theme toggler & close -->
@@ -79,52 +84,9 @@
           </div>
         </div>
       </header>
-      <!-- main -->
       <main>
-        <!-- user -->
-        <!-- <section class="user"> -->
           <!-- 改變佈局 -->
           <div class="container"> 
-            <!-- <p class="secondary-text">Exercises guidance</p> -->
-            <!-- navigation: displayed on large screen -->
-            <!-- <ul class="nav-list">
-              <li>
-                <span
-                  class="iconify"
-                  data-inline="false"
-                  data-icon="carbon:user-avatar"
-                  style="color: #4b62c1; font-size: 23px"
-                ></span>
-                Profile
-              </li>
-              <li class="active">
-                <span
-                  class="iconify"
-                  data-inline="false"
-                  data-icon="carbon:dashboard"
-                  style="color: #4b62c1; font-size: 23px"
-                ></span>
-                Dashboard
-              </li>
-              <li>
-                <span
-                  class="iconify"
-                  data-inline="false"
-                  data-icon="carbon:event-schedule"
-                  style="color: #4b62c1; font-size: 23px"
-                ></span>
-                Schedule
-              </li>
-              <li>
-                <span
-                  class="iconify"
-                  data-inline="false"
-                  data-icon="clarity:logout-line"
-                  style="color: #4b62c1; font-size: 23px"
-                ></span>
-                logout
-              </li>
-            </ul> -->
           </div>
         </section>
         <div class="breakpoint-1-50 breakpoint-2-40">
@@ -158,7 +120,7 @@
             <div class="container">
               <h1>My workouts</h1>
               <div class="inner-container">
-                <button class="plus-circle">+</button>
+                <button class="plus-circle" id="myBtn">+</button>
                 <p class="green-text">Full body</p>
                 <p>HIIT</p>
                 <p>Lower body</p>
@@ -171,33 +133,57 @@
           <!-- timer 右上角-->
           <section class="timer">
             <div class="container">
-              <h1>timer</h1>
+              <h1>Total daily energy expenditure(TDEE)</h1>
               <div class="inner-container">
                 <div class="num-exercises-container">
-                  <p class="secondary-text">Exercises</p>
-                  <p class="num-exercises">4</p>
+                  <p class="secondary-text">Total daily energy expenditure</p>
                 </div>
                 <div class="timer-entry">
-                  <p>Workout</p>
+                  <p>Sitting and working (almost no exercise)</p>
                   <div>
-                    <span class="minus">-</span>
-                    <span> 00:40 </span>
-                    <span class="plus">+</span>
+                    <span class="minus"></span>
+                    <span></span>
+                    <span class="plus" id="tdee_1"></span>
                   </div>
                 </div>
                 <div class="timer-entry">
-                  <p>Rest</p>
+                  <p>Leisure exercise 1-3 days a week</p>
                   <div>
-                    <span class="minus">-</span>
-                    <span> 00:10 </span>
-                    <span class="plus">+</span>
+                    <span class="minus"></span>
+                    <span></span>
+                    <span class="plus" id="tdee_2"></span>
                   </div>
                 </div>
-                <div class="control-buttons">
+                <div class="timer-entry">
+                  <p>Medium-intensity exercise 3-5 days a week</p>
+                  <div>
+                    <span class="minus"></span>
+                    <span></span>
+                    <span class="plus" id="tdee_3"></span>
+                  </div>
+                </div>
+                <div class="timer-entry">
+                  <p>High-intensity exercise 6-7 days a week</p>
+                  <div>
+                    <span class="minus"></span>
+                    <span></span>
+                    <span class="plus" id="tdee_4"></span>
+                  </div>
+                </div>
+                <div class="timer-entry">
+                  <p>Long-term exercise or physical labor</p>
+                  <div>
+                    <span class="minus"></span>
+                    <span></span>
+                    <span class="plus" id="tdee_5"></span>
+                  </div>
+                </div>
+
+                <!-- <div class="control-buttons">
                   <span class="iconify"data-inline="false" data-icon="carbon:stop" style="font-size: 33px"></span>
                   <span class="iconify play" data-inline="false" data-icon="bi:play" style="color: #00ce93; font-size: 35px"></span>
                   <span class="iconify" data-inline="false" data-icon="bi:pause" style="font-size: 35px"></span>
-                </div>
+                </div> -->
               </div>
             </div>
           </section>
@@ -207,39 +193,182 @@
               <div class="inner-container">
                 <p class="info-title orange-text">weight</p>
                 <div class="num-unit-container">
-                  <p class="num">60</p>
+                  <p class="num">{{request.user.person_info.weight|default:"0"}}</p>
                   <p class="secondary-text unit">kg</p>
                 </div>
               </div>
               <div class="inner-container">
                 <p class="info-title blue-text">height</p>
                 <div class="num-unit-container">
-                  <p class="num">162</p>
+                  <p class="num">{{request.user.person_info.height|default:"0"}}</p>
                   <p class="secondary-text unit">cm</p>
                 </div>
               </div>
               <div class="inner-container">
                 <p class="info-title green-text">bmi</p>
-                <p class="num">22.1</p>
+                <p class="num" id="output"></p>
               </div>
               <div class="inner-container">
-                <p class="info-title red-text">calories</p>
+                <p class="info-title red-text">BMR</p>
                 <div class="num-unit-container">
-                  <p class="num">1732</p>
-                  <p class="secondary-text unit">kcal</p>
+                  <p class="num" id="bmr_output"></p>
+                  <p class="secondary-text unit"></p>
                 </div>
               </div>
             </div>
           </section>
         </div>
+
+        <div id="dlgMedical" style="display:none;">
+          <div class="row">
+            <div class="col-xs-12">
+            <div>Plan your fitness schedule as follows</div>
+            <br>
+              <ul class="list-group">
+                <li class="list-group-item"><input type="checkbox" value="None"> None</li>
+                <li class="list-group-item"><input type="checkbox" value="Depression"> Depression</li>
+                <li class="list-group-item"><input type="checkbox" value="Lung cancer"> Lung cancer</li>
+                <li class="list-group-item"><input type="checkbox" value="Anxiety"> Anxiety</li>
+                <li class="list-group-item"><input type="checkbox" value="Stroke"> Stroke</li>
+              </ul>
+            </div>
+              <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                  <button class="btn btn-block btn-warning btn-lg" id="cmdDiseaseDone">
+                  DONE
+                  </button>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        
+
+
       </main>
     </div>
+
     <!-- iconify -->
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <!-- javascript -->
     <script>
       // variables
       const sideNavWidth = "200px";
+      
+      //BMI calculation
+      var h = Number("{{request.user.person_info.height}}");
+      var w = Number("{{request.user.person_info.weight}}");
+      var age = Number("{{request.user.person_info.age}}");
+      var gender = String("{{request.user.person_info.gender}}");
+
+      bmi = (w/(h*h))*10000;
+
+      // document.getElementById('output').innerHTML = bmi.toFixed(2);
+      document.getElementById('output').innerHTML = bmi.toFixed(2);
+      // End of Bmi calculation
+
+      //BMR calculation 基礎代謝率
+      //BMR formula for boy
+      if(gender=='M'){
+        bmr = (10*w+6.25*h-5*age+5);
+        document.getElementById('bmr_output').innerHTML = bmr.toFixed(1);
+      }
+      //BMR formula for girl
+      if(gender=='F'){
+        bmr_g = (10*w+6.25*h-5*age-161);
+        document.getElementById('bmr_output').innerHTML = bmr_g.toFixed(1);
+      }
+      // End of BMR calculation 
+
+      // Start TDEE 
+      if(gender=='M'|| gender=='F'){
+        var tdee_1 = bmr*1.2
+        var tdee_2 = bmr*1.375
+        var tdee_3 = bmr*1.55
+        var tdee_4 = bmr*1.72
+        var tdee_5 = bmr*1.9
+
+        document.getElementById('tdee_1').innerHTML = tdee_1.toFixed(1);
+        document.getElementById('tdee_2').innerHTML = tdee_2.toFixed(1);
+        document.getElementById('tdee_3').innerHTML = tdee_3.toFixed(1);
+        document.getElementById('tdee_4').innerHTML = tdee_4.toFixed(1);
+        document.getElementById('tdee_5').innerHTML = tdee_5.toFixed(1);
+
+      }
+      //End TDEE
+      
+      //test
+      
+      //end test
+
+
+
+      $(function() { // When the DOM has loaded...
+	      // Initialise dialog
+        $('#dialog_login').dialog({
+          autoOpen: false,
+          modal: true,
+          title: 'Login Status',
+          open: function() {
+            dialog_close()
+          }, 
+          close: function() {
+            //clrflds()
+          }
+        })
+        var timer = null
+        function dialog_close() {
+          if (timer) {
+            clearTimeout(timer) // Clear any existing timeout
+          }
+          timer = setTimeout(function() { // Start a new one
+            $('#dialog_login').dialog('close')
+            timer = null
+          }, 3000)
+        }
+        $('#open').click(function() { // Attach event handlers in code
+          $('#dialog_login').html('<br /><div>Login Failed...</div>').dialog('open')
+        })
+        $('#close').click(dialog_close)
+      })
+
+
+
+      $(document).ready(function(){ 
+        $("#dlgMedical").dialog({autoOpen : false, modal : true, show : "blind", hide : "blind",dialogClass: 'noTitleStuff', width:800});
+    
+        $("#dlgParents").dialog({autoOpen : false, modal : true, show : "blind", hide : "blind",dialogClass: 'noTitleStuff', width:800});
+        
+        $("#addDisease").click(function() {
+          // $("#dlgMedical").dialog("open");
+          alert('alert');
+          $("#dialog").dialog("open");
+        });
+      
+
+
+
+        $("#cmdDiseaseDone").click(function() {
+          // clear selection
+          $('#divDisease').empty();
+          // iterate selected disease
+          $( "li > input:checked" ).each(function( index ) {
+            // add history elements
+            var newID = $( this ).attr('value').replace(' ','_');
+            $('#divDisease').html($('#divDisease').html() + '<div class="row"><div class="col-xs-12"><div class="item">'+$( this ).attr('value')+'</div></div></div><div id="div'+newID+'"></div><div class="row"><div class="col-xs-12"><a id="'+newID+'" class="addParent">+ Add/Edit</a></div></div><div class="row">&nbsp;</div>'); 
+            $( ".addParent" ).click(function(e) {
+              selectedItem = $(e.target).attr('id');
+              $("#dlgParents").dialog( "open" );
+            });
+          });
+          // clear checked
+        $( "li > input:checked" ).each(function( index ) {
+            $( this ).prop('checked',false);
+          });
+            $("#dlgMedical").dialog( "close" );
+        });   
+      });
+      //Start Jquery
 
       // elements
       const openMenu = document.querySelector("#open-menu");
@@ -248,20 +377,6 @@
       const body = document.querySelector("body");
       const sunIcons = document.querySelectorAll(".sun-outline");
       const moonIcons = document.querySelectorAll(".moon-outline");
-
-      // event listeners
-
-      // /* open side nav */
-      // openMenu.addEventListener("click", () => {
-      //   sideNav.style.right = "0";
-      //   body.style.left = `-${sideNavWidth}`;
-      // });
-
-      // /* close side nav */
-      // closeMenu.addEventListener("click", () => {
-      //   sideNav.style.right = `-${sideNavWidth}`;
-      //   body.style.left = "0";
-      // });
 
       // theme toggler: outlined sun
       for (const sun of sunIcons) {

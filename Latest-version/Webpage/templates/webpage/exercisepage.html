@@ -1,0 +1,306 @@
+{% extends 'webpage/main.html' %}
+
+{% load static %} 
+{% block content %}
+<head>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<div class="section-flex">
+    <!--use for padding-->
+    <div class="space">
+    <!--End padding-->  
+        <!-- 左上-->
+       <div class="cards">
+         <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="cards__item">       
+                  <br>
+                  <div class="exercise-title">Overhead Press</div>
+                  <hr>
+                  <img class="photo_size" src="/media/Press_Shoulders_1080.gif">            
+              </div>
+            </div>
+
+            <div class="flip-card-back">
+                  <div class="cards__item_back">
+                    <br>
+                    <div class="procedure-title">Procedure</div>
+                    <hr>
+                    <ul>
+                      <li>Stand with the bar on your front shoulders, and your hands next to your shoulders</li>
+                      <br>
+                      <li>Press the bar over your head, until it’s balanced over your shoulders and mid-foot</li>
+                      <br>
+                      <li>Lock your elbows at the top, and shrug your shoulders to the ceiling</li>
+                      <br>
+                    </ul>
+                    <div class="padding-btn">
+                      <button class="start_exercise_btn">Start Exercise</button>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div> 
+        <div class="padding-bottom"></div>
+            <!-- <div class="cards__item">       
+                <br>
+                <div class="exercise-title">Shoulder Ball Bell Press</div>
+                <hr>
+                <img class="photo_size" src="/media/Press_Shoulders_1080.gif">            
+            </div> -->
+            <!-- End 左上-->
+            
+            
+
+            <div class="space"></div>
+            <!-- Start testing code 右上-->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="cards__item">       
+                        <br>
+                        <div class="exercise-title">Barbell Straight Leg Deadlift</div>
+                        <hr>
+                        <img class="photo_size" src="/media/Barbell-Straight-Leg-Deadlift_Thighs_1080.gif">            
+                    </div>
+                  </div>
+
+                  <div class="flip-card-back">
+                        <div class="cards__item_back">
+                          <br>
+                          <div class="procedure-title">Procedure</div>
+                          <hr>
+                          <ul>
+                            <li>Stand with your mid-foot under the barbell</li>
+                            <br>
+                            <li>Bend over and grab the bar with a shoulder-width grip</li>
+                            <br>
+                            <li>Bend your knees until your shins touch the bar</li>
+                            <br>
+                            <li>Lift your chest up and straighten your lower back</li>
+                            <br>
+                            <li>Take a big breath, hold it, and stand up with the weight</li>
+                          </ul>
+                          <div class="padding-btn">
+                            <button class="start_exercise_btn">Start Exercise</button>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+            <!-- testing code End-->
+        <!-- 左下 -->
+        <div class="space"></div>
+          <div class="cards">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="cards__item">       
+                      <br>
+                      <div class="exercise-title">BARBELL ROW</div>
+                      <hr>
+                      <img class="photo_size" src="/media/Barbell-Bent-Over-Row_Back_1080.gif">            
+                  </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="cards__item_back">
+                      <br>
+                      <div class="procedure-title">Procedure</div>
+                      <hr>
+                      <ul>
+                        <li>Stand with your mid-foot under the bar (medium stance)</li>
+                        <br>
+                        <li>Bend over and grab the bar (palms down, medium-grip)</li>
+                        <br>
+                        <li>Unlock your knees while keeping your hips high</li>
+                        <br>
+                        <li>Lift your chest and straighten your back</li>
+                        <br>
+                        <li>Pull the bar against your lower chest</li>
+                      </ul>
+                    <div class="padding-btn">
+                      <button class="start_exercise_btn" onclick="location.href = 'video_stream/?exercise_name=BARBELL_ROW'">Start Exercise</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END 左下 -->
+
+            <div class="space"></div>
+            <div class="cards">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="cards__item">       
+                        <br>
+                        <div class="exercise-title">SQUAT</div>
+                        <hr>
+                        <img class="photo_size" src="/media/Barbell-Full-Squat_Thighs_1080.gif">            
+                    </div>
+                  </div>
+  
+                  <div class="flip-card-back">
+                    <div class="cards__item_back">
+                        <br>
+                        <div class="procedure-title">Procedure</div>
+                        <hr>
+                        <ul>
+                          <li>Stand with the bar on your upper-back, and your feet shoulder-width apart</li>
+                          <br>
+                          <li>Squat down by pushing your knees to the side while moving hips back</li>
+                          <br>
+                          <li>Break parallel by Squatting down until your hips are lower than your knees</li>
+                          <br>
+                          <li>Squat back up while keeping your knees out and chest up</li>
+                          <br>
+                          <li>Stand with your hips and knees locked at the top</li>
+                        </ul>
+                      <div class="padding-btn">
+                        <button class="start_exercise_btn">Start Exercise</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Three -->
+          
+          
+        </div> 
+    </div>
+</div>
+<script>
+    $(document).ready(function() {  
+
+        $('.flip-card').click(function() {
+            $(this).toggleClass('hover');
+        });
+});
+</script>
+<style>
+body{
+    background-color: #f5f5fb;
+}
+.cards {    
+    display: flex;
+    /* Put a card in the next row when previous cards take all width */
+    flex-wrap: wrap;
+    /* margin-left: -8px; */
+    margin-right: -8px;
+}
+
+.cards__item {
+    flex-basis: 25%;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 2px solid black;
+    border-radius: 14px;
+    background-color: white;
+    
+}
+.space{
+    padding-left: 25px;
+    padding-top: 25px;
+    
+}
+.section-flex {                    
+    display: flex;
+    justify-content: center;
+ } 
+.photo_size{
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    padding: 5px;
+    width: 500px;
+    height: 450px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 519px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: flex;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+}
+
+.flip-card.hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 519px;
+  height: 300px;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  /* background-color: white; */
+  color: black;
+}
+
+.flip-card-back {
+  /* background-color: white; */
+  transform: rotateY(180deg);
+}
+.exercise-title{
+    text-align: center;
+    font-weight: bold;
+}
+.cards__item_back{
+    flex-basis: 25%;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 2px solid black;
+    border-radius: 14px;
+    background-color: white;
+    height: 178%;
+}
+ul{
+  text-align: left;
+}
+.procedure-title{
+    text-align: center;
+    font-weight: bold;
+}
+.start_exercise_btn{
+    width: 80%;
+    height: 50px;
+    border: 1px solid;
+    background: transparent;
+    border-radius: 25px;
+    font-size: 20px;
+    color: grey;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    position: fixed;
+    right: 45px;
+    bottom: -200px;
+}
+.start_exercise_btn:hover{
+  background: grey;
+  color: white;
+}
+.padding-btn{
+  padding-top: 25px;
+}
+.padding-bottom{
+  padding-bottom: 50%;
+}
+</style>
+{% endblock content %}
